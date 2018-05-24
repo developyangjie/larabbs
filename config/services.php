@@ -35,4 +35,14 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'baidu_translate' => [
+        'appid' => env('BAIDU_TRANSLATE_APPID'),
+        'key'   => env('BAIDU_TRANSLATE_KEY'),
+    ],
+
+    'weixin'=>[
+        'client_id' => 'wxd6cd13e0df4dcf03',
+        'client_secret' => 'd4624c36b6795d1d99dcf0547af5443d',
+        'redirect' => env('WEIXIN_REDIRECT_URI',''),
+    ]
 ];

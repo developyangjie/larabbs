@@ -14,3 +14,7 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('topic.{topicId}',function($user,$topicId){
+    return $user->id == \App\Models\Topic::find($topicId)->user->id;
+});

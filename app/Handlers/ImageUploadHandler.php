@@ -44,8 +44,8 @@ class ImageUploadHandler{
 
     public function reduceSize($path,$size){
         Image::make($path)->resize($size,$size,function(Constraint $constraint){
-           // $constraint->aspectRatio();
-            //$constraint->upsize();
+            $constraint->aspectRatio();
+            $constraint->upsize();
         })->save();
     }
 }
