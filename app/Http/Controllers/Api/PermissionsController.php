@@ -11,6 +11,6 @@ class PermissionsController extends Controller
         $permissions = $this->auth->user()->getAllPermissions();
 
         return $this->response->collection($permissions,new PermissionTransformer());
-        
+
     }
 }
