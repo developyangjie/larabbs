@@ -32,5 +32,10 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/jquery.textcomplete.js') }}"></script>
 @yield('scripts')
+
+@if(app()->isLocal())
+    @include('sudosu::user-selector')
+@endif
+
 </body>
 </html>
