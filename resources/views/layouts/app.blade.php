@@ -7,8 +7,8 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>
-    <meta name="description" content="@yield('description', setting('seo_description', 'LaraBBS 爱好者社区。'))" />
+    <title>@yield('title', 'FinancialFreedom')</title>
+    <meta name="description" content="@yield('description', setting('seo_description', 'FinancialFreedom 爱好者社区。'))" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
