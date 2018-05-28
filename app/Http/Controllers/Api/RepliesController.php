@@ -15,6 +15,10 @@ class RepliesController extends Controller
         $reply->content = $request->input("content");
         $reply->topic_id = $topic->id;
         $reply->user_id = $this->auth->user()->id;
+        if($request->input("reply_user_id") && $reply->user_id != $request->input("reply_user_id")){
+            $reply->reply_user_id = $request->input("reply_user_id");
+            $reply->reply_user_name = $request->input("reply_user_name");
+        }
         $reply->save();
 
         return $this->response->item($reply,new ReplyTransformer())->setStatusCode(201);
@@ -31,12 +35,12 @@ class RepliesController extends Controller
     }
 
     public function show(Topic $topic){
-        $replies = $topic->replies()->paginate(20);
+        $replies = $topic->replies()->orderBy("updated_at","desc")->paginate(20);
         return $this->response->paginator($replies,new ReplyTransformer());
     }
 
     public function userIndex(User $user){
-        $replies = $user->replies()->paginate(20);
+        $replies = $user->replies()->orderBy("updated_at","desc")->paginate(20);
 
         return $this->response->paginator($replies,new ReplyTransformer());
     }

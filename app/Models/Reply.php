@@ -25,7 +25,7 @@ namespace App\Models;
  */
 class Reply extends Model
 {
-    protected $fillable = [ 'content'];
+    protected $fillable = [ 'content','reply_user_id','reply_user_name'];
 
     public function topic(){
         return $this->belongsTo(Topic::class);

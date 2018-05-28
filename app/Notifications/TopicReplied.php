@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Reply;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -30,7 +31,7 @@ class TopicReplied extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database','mail'];
+        return ['database'];
     }
 
     /**
@@ -43,16 +44,19 @@ class TopicReplied extends Notification implements ShouldQueue
     {
         $topic = $this->reply->topic;
         $link =  $topic->link(['#reply' . $this->reply->id]);
-
+        $user = User::find($this->reply->reply_user_id);
         return [
             'reply_id' => $this->reply->id,
             'reply_content' => $this->reply->content,
+            'reply_tags_content'=>strip_tags($this->reply->content),
             'user_id' => $this->reply->user->id,
             'user_name' => $this->reply->user->name,
             'user_avatar' => $this->reply->user->avatar,
             'topic_link' => $link,
             'topic_id' => $topic->id,
             'topic_title' => $topic->title,
+            'reply_user_id'=>$user->id,
+            'reply_user_name' =>$user->name,
         ];
     }
 
