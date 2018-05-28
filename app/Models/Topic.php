@@ -70,7 +70,7 @@ class Topic extends Model
     }
 
     public function scopeRecentReplied($query){
-        return $query->orderBy("updated_at","desc");
+        return $query->orderBy("updated_at","desc")->orderBy("created_at","desc");
     }
 
     public function link($params = []){
