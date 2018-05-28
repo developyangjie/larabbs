@@ -27,7 +27,7 @@ class TopicsController extends Controller
 
 		$links = $link->getCacheLinks();
 
-		return view('topics.index', compact('topics','active_users','links'));
+		return view('topics.index', compact('topics','active_users','links','categories'));
 	}
 
     public function show(Topic $topic)
