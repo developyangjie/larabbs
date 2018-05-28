@@ -2,24 +2,23 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
 use Illuminate\Console\Command;
 
-class GenerateToken extends Command
+class FounderUser extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'larabbs:generate_token';
+    protected $signature = 'larabbs:founder';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'token';
+    protected $description = 'set user founder';
 
     /**
      * Create a new command instance.
@@ -38,6 +37,8 @@ class GenerateToken extends Command
      */
     public function handle()
     {
+        $name = $this->anticipate('What is your set,Founder or Maintainer?', ['F', 'M']);
+
         $userId = $this->ask("输入用户 id");
 
         $user = User::find($userId);
@@ -46,10 +47,10 @@ class GenerateToken extends Command
             $this->error("参数错误");
         }
 
-        $ttl = 365*24*60;
-
-        $this->info(\Auth::guard("api")->setTTL($ttl)->login($user));
-
-
+        if($name == 'F'){
+            $user->assignRole("Founder");
+        }else{
+            $user->assignRole("Maintainer");
+        }
     }
 }
