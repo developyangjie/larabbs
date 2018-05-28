@@ -48,8 +48,9 @@ class TopicsController extends Controller
                 $topic->recentReplied();
                 break;
         }
+        $topics = $topic->withOrder($request->order)->where($where)->paginate(20);;
 
-        $topics = $topic->where($where)->paginate(20);
+       // $topics = $topic->where($where)->paginate(20);
 
         return $this->response->paginator($topics,new TopicTransformer());
 
