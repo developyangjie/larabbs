@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Command;
 
 class FounderUser extends Command
@@ -39,12 +40,12 @@ class FounderUser extends Command
     {
         $name = $this->anticipate('What is your set,Founder or Maintainer?', ['F', 'M']);
 
-        $userId = $this->ask("输入用户 id");
+        $userId = $this->ask("what is id");
 
         $user = User::find($userId);
 
         if(!$user){
-            $this->error("参数错误");
+            $this->error("params error");
         }
 
         if($name == 'F'){
