@@ -51,6 +51,8 @@ $api->version('v1',[
 
         $api->get("users/{user}/topics","TopicsController@userIndex")->name("api.topics.index");
 
+        $api->get("books","BooksController@index")->name("api.books.index");
+
         // 用户详情
         $api->get('users/{user}', 'UserController@show')->name('api.users.show');
 

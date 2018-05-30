@@ -18,6 +18,7 @@ class RepliesController extends Controller
         if($request->input("reply_user_id") && $reply->user_id != $request->input("reply_user_id")){
             $reply->reply_user_id = $request->input("reply_user_id");
             $reply->reply_user_name = $request->input("reply_user_name");
+            $reply->reply_replied_id = $request->input("reply_replied_id");
         }
         $reply->save();
 

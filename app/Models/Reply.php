@@ -22,6 +22,12 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereUserId($value)
  * @mixin \Eloquent
+ * @property int $reply_user_id
+ * @property string|null $reply_user_name
+ * @property int $reply_replied_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereReplyRepliedId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereReplyUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereReplyUserName($value)
  */
 class Reply extends Model
 {

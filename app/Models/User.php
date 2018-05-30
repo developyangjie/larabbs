@@ -53,6 +53,10 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWeixinOpenid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWeixinUnionid($value)
  * @mixin \Eloquent
+ * @property string|null $weapp_openid
+ * @property string|null $weixin_session_key
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWeappOpenid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWeixinSessionKey($value)
  */
 class User extends Authenticatable implements JWTSubject
 {

@@ -44,19 +44,29 @@ class TopicReplied extends Notification implements ShouldQueue
     {
         $topic = $this->reply->topic;
         $link =  $topic->link(['#reply' . $this->reply->id]);
-        $user = User::find($this->reply->reply_user_id);
+        $reply_user_id = 0;
+        $reply_user_name = "";
+        $reply_tags_content = "";
+        if($this->reply->reply_user_id){
+            $user = User::find($this->reply->reply_user_id);
+            $reply_user_id = $user->id;
+            $reply_user_name = $user->name;
+            $repliedReply = Reply::find($this->reply->reply_replied_id);
+            $reply_tags_content = $repliedReply->content;
+        }
+
         return [
             'reply_id' => $this->reply->id,
             'reply_content' => $this->reply->content,
-            'reply_tags_content'=>strip_tags($this->reply->content),
+            'reply_tags_content'=>strip_tags($reply_tags_content),
             'user_id' => $this->reply->user->id,
             'user_name' => $this->reply->user->name,
             'user_avatar' => $this->reply->user->avatar,
             'topic_link' => $link,
             'topic_id' => $topic->id,
             'topic_title' => $topic->title,
-            'reply_user_id'=>$user->id,
-            'reply_user_name' =>$user->name,
+            'reply_user_id'=>$reply_user_id,
+            'reply_user_name' =>$reply_user_name,
         ];
     }
 
