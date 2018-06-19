@@ -81,7 +81,27 @@
                 connectionCount:3,
                 leaveConfirm:'文件上传中，关闭页面讲取消上传'
             },
-            pasteImage:true
+            pasteImage:true,
+            toolbar: [
+                'title',
+                'bold',
+                'italic',
+                'underline',
+                'strikethrough',
+                'fontScale',
+                'color',
+                'ol'  ,
+                'ul' ,
+                'blockquote',
+                'code'  ,
+                'table',
+                'link',
+                'image',
+                'hr'      ,
+                'indent',
+                'outdent',
+                'alignment'
+        ]
         });
     });
     </script>
