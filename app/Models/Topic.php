@@ -58,8 +58,11 @@ class Topic extends Model
             case "recent":
                 $query->recent();
                 break;
-            default:
+            case "last":
                 $query->recentReplied();
+                break;
+            default:
+                $query->recent();
         }
         return $query->with("user","category");
     }
