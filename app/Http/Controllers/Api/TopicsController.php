@@ -10,6 +10,7 @@ use App\Transformers\TopicTransformer;
 use Dingo\Api\Http\Response;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Vanry\Scout\Highlighter;
 
 class TopicsController extends Controller
 {
@@ -59,8 +60,26 @@ class TopicsController extends Controller
         $q = $request->q;
         $paginator = [];
         if ($q) {
-            $paginator = Topic::search($q)->paginate(20);
+            $paginator = Topic::search($q)->paginate(10);
+            $tokenizer = app('tntsearch.tokenizer')->driver();
+            foreach($paginator as $post){
+                $post->title = $this->highlight($tokenizer,$post->title, $q,'span');
+                $post->body = $this->highlight($tokenizer,str_limit(strip_tags($post->body),200), $q,'span');
+            }
         }
         return $this->response->paginator($paginator,new TopicTransformer());
+    }
+
+    protected function highlight($tokenizer,$text, $query, $tag = 'em')
+    {
+        $terms = $tokenizer->tokenize($query);
+
+        $patterns = array_map(function ($term) {
+            return "/{$term}/is";
+        }, array_unique($terms));
+
+        $replacement = "<{$tag} style='color:red'>\$0</{$tag}>";
+
+        return preg_replace($patterns, $replacement, $text);
     }
 }

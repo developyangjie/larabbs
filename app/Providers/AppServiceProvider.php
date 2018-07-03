@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\EngineManager;
 use Elasticsearch\ClientBuilder as ElasticBuilder;
+use Vanry\Scout\Highlighter;
 
 class AppServiceProvider extends ServiceProvider
 {
