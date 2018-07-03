@@ -235,6 +235,7 @@ return [
             "expires"=>env("API_RATE_LIMITS_SIGN_EXPIRES",1),
             "limit"=>env("API_RATE_LIMITS_SIGN_LIMIT",60)
         ]
-    ]
+    ],
+    'weixin_version'=>env("API_WEIXIN_VERSION","v0.1.5")
 
 ];

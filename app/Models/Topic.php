@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Traits\EsSearchable;
+use Laravel\Scout\Searchable;
 
 /**
  * App\Models\Topic
@@ -43,6 +45,9 @@ namespace App\Models;
  */
 class Topic extends Model
 {
+    use Searchable;
+    public $asYouType = true;
+    protected $table = 'topics';
     protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
 
     public function category(){
@@ -99,5 +104,14 @@ class Topic extends Model
     public function topReplies()
     {
         return $this->replies()->orderBy('id','desc')->limit(5)->get();
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'id'=>$this->id,
+            'title' => $this->title,
+            'body' => $this->body
+        ];
     }
 }

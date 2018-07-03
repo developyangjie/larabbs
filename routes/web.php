@@ -30,3 +30,5 @@ Route::get("home/test","HomeController@test")->name("home.test")->middleware('au
 
 Route::get("home/broadcast","HomeController@broadcast")->name("home.broadcast");
 Route::get("home/broadcastShow","HomeController@broadcastShow")->name("home.broadcastShow");
+
+Route::get("search","PostController@search")->name("post.search");

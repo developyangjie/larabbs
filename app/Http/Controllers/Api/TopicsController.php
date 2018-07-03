@@ -17,7 +17,6 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = $this->auth->user()->id;
         $topic->save();
-
         return $this->response->item($topic,new TopicTransformer());
     }
 
@@ -54,5 +53,14 @@ class TopicsController extends Controller
 
     public function show(Topic $topic){
         return $this->response->item($topic,new TopicTransformer());
+    }
+
+    public function search(Request $request){
+        $q = $request->q;
+        $paginator = [];
+        if ($q) {
+            $paginator = Topic::search($q)->paginate(20);
+        }
+        return $this->response->paginator($paginator,new TopicTransformer());
     }
 }

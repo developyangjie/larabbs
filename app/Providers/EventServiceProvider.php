@@ -23,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         'eloquent.created: Illuminate\Notifications\DatabaseNotification' => [
             'App\Listeners\PushNotification',
         ],
+        \Dingo\Api\Event\ResponseWasMorphed::class => [
+            'App\Events\AddMetaWeixinVersion'
+        ]
     ];
 
     /**

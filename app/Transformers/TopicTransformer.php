@@ -21,6 +21,7 @@ class TopicTransformer extends TransformerAbstract{
             'slug' => $topic->slug,
             'created_at' => $topic->created_at->toDateTimeString(),
             'updated_at' => $topic->updated_at->toDateTimeString(),
+            "highlight" => isset($topic->highlight)?$topic->highlight:null
         ];
     }
 

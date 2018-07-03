@@ -56,6 +56,8 @@ $api->version('v1',[
         // 用户详情
         $api->get('users/{user}', 'UserController@show')->name('api.users.show');
 
+        $api->get("search","TopicsController@search")->name("api.topics.search");
+
         $api->group(['middleware' => 'api.auth'],function($api){
 
             $api->delete("topics/{topic}","TopicsController@destroy")->name("api.topics.destroy");

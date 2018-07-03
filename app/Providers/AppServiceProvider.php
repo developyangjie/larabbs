@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Handlers\EsEngine;
 use App\Models\Link;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Encore\Admin\Config\Config;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\EngineManager;
+use Elasticsearch\ClientBuilder as ElasticBuilder;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +27,16 @@ class AppServiceProvider extends ServiceProvider
 
         //
         \Carbon\Carbon::setLocale("zh");
+
+        Config::load();  // 加上这一行
+
+        resolve(EngineManager::class)->extend('es', function($app) {
+            return new EsEngine(ElasticBuilder::create()
+                ->setHosts(config('scout.elasticsearch.hosts'))
+                ->build(),
+                config('scout.elasticsearch.index')
+            );
+        });
     }
 
     /**
