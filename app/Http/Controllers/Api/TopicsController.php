@@ -64,7 +64,7 @@ class TopicsController extends Controller
             $tokenizer = app('tntsearch.tokenizer')->driver();
             foreach($paginator as $post){
                 $post->title = $this->highlight($tokenizer,$post->title, $q,'span');
-                $post->body = $this->highlight($tokenizer,str_limit(strip_tags($post->body),200), $q,'span');
+                $post->body = $this->highlight($tokenizer,str_limit(strip_tags($post->body),150), $q,'span');
             }
         }
         return $this->response->paginator($paginator,new TopicTransformer());
