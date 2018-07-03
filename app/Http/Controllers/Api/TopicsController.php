@@ -78,7 +78,7 @@ class TopicsController extends Controller
             return "/{$term}/is";
         }, array_unique($terms));
 
-        $replacement = "<{$tag} style='color:red'>\$0</{$tag}>";
+        $replacement = "<{$tag} style='color:#EB5424'>\$0</{$tag}>";
 
         return preg_replace($patterns, $replacement, $text);
     }
