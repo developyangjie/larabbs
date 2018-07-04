@@ -107,7 +107,7 @@ return [
         ],
 
         'tokenizer' => [
-            'driver' => env('TNTSEARCH_TOKENIZER', 'jieba'),
+            'driver' => env('TNTSEARCH_TOKENIZER', 'analysis'),
 
             'jieba' => [
                 'dict' => 'small',

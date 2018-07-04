@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1945dd26a0acc6be25b7ac6051a52d0",
+    "content-hash": "2cfe1a37b3a22a83c4401587b3583ad1",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -3427,6 +3427,52 @@
             ],
             "description": "A middleware to switch dingo serializer",
             "time": "2018-01-06T05:09:05+00:00"
+        },
+        {
+            "name": "lmz/phpanalysis",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liumingzhij26/phpanalysis.git",
+                "reference": "a242853a124d78cd4274e628b25a949b27f07341"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/liumingzhij26/phpanalysis/zipball/a242853a124d78cd4274e628b25a949b27f07341",
+                "reference": "a242853a124d78cd4274e628b25a949b27f07341",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phpanalysis\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "liumingzhi",
+                    "email": "liumingzhij26@qq.com"
+                }
+            ],
+            "description": "The PHP library for phpanalysis",
+            "homepage": "https://github.com/liumingzhij26/phpanalysis",
+            "keywords": [
+                "phpanalysis"
+            ],
+            "time": "2016-10-14T10:02:21+00:00"
         },
         {
             "name": "mews/captcha",
